@@ -4,11 +4,16 @@ import entities.Account;
 import entities.BusinessAccount;
 import entities.SavingsAccount;
 
+import java.sql.SQLOutput;
+
 public class Program {
     public static void main(String[] args) {
 
         Account acc = new Account(1001, "Alex", 0.0);
         BusinessAccount bacc = new BusinessAccount(1002, "Maria", 100.0, 500.0);
+
+        System.out.println("===========================================================");
+        System.out.println("UPCASTING E DOWNCASTING: ");
 
         //Upcasting: é eu pegar um objeto do tipo BusinessAccount e atribuir esse objeto a uma variavel Account.
         //obs BusinessAccount é subclasse, e Account é superclasse.
@@ -50,5 +55,29 @@ public class Program {
             acc5.updateBalance();
             System.out.println("Update !!");
         }
+
+
+        System.out.println("=====================================================");
+        System.out.println("EXEMPLOS JA USANDO A SOBREPOSICAO DE METODO. ANOTACAO @OVERRIDE NO METODO, E PALAVRA SUPER: ");
+
+        //criando uma conta do tipo Account. depois sacamos um valor com withDraw. e por fim imprimimos na tela o saldo com getBalance().
+        //obs lembrando que a conta Account, ela tem a taxa de 5.0 para o saque (withDraw).
+        Account acc6 = new Account(1001, "Alex", 1000.0);
+        acc6.withDraw(200.0);
+        System.out.println(acc6.getBalance());
+
+        //agora vou fazer um Upcasting. a variavel pode tanto ser Account quanto SavingsAccount aqui nesse exemplo.
+        //obs aqui é uma conta SavingsAccount, pq foi instanciada assim, mesmo sendo colocada numa variavel do tipo Account. entao nao vai descontar os 5.0 do saque(withDraw).
+        //o que prevalece aqui entao é a implementacao da classe SavingAccount, tanto que o metodo aqui é o withDraw dessa classe.
+        Account acc7 = new SavingsAccount(1002, "Marília", 1000.0, 0.01);
+        acc7.withDraw(200.0);
+        System.out.println(acc7.getBalance());
+
+        //criar uma outra conta, so que agora BusinessAccount.
+        //esse saque(withDraw) vou descontar a taxa de 5.0 que é da classe Account, e tbm o valor de 2.0 que é da classe businessAccount.
+        BusinessAccount acc8 = new BusinessAccount(1003, "Bob", 1000.0, 500.0);
+        acc8.withDraw(200.0);
+        System.out.println(acc8.getBalance());
     }
+
 }

@@ -25,4 +25,11 @@ public class SavingsAccount extends Account{
     public void updateBalance() {
         balance += balance * InterestRate;
     }
+
+    //aqui esta o metodo withDraw sobrescrito, por isso a anotação @Override. é uma sobreposição de método.
+    //aqui ele esta sobrescrito e vou implementar ele de forma diferente, ou seja, nao tem o 5.0 para pagar conforme tem no metodo withDraw da Account.
+    @Override
+    public void withDraw(double amount) {
+        balance -= amount;
+    }
 }

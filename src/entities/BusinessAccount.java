@@ -33,4 +33,12 @@ public class BusinessAccount extends Account{
             balance += amount - 10.0;
         }
     }
+
+    //uso da palavra 'super'. serve para chamar a implementacao da superclasse.
+    //nesse exemplo usa o super que vai fazer o que o metodo withDraw ja faz na classe Account. E na linha de baixo vai ainda pegar o balance e ainda um valor adicionar de 2.0;
+    @Override
+    public void withDraw(double amount) {
+        super.withDraw(amount);   //vou efetuar normalmente o saque (withDraw) da classe Account. obs. reutilizei o código que já esta na sueprclasse.
+        balance -= 2.0;   //só que agora vou também descontar do saldo o valor de 2.0
+    }
 }

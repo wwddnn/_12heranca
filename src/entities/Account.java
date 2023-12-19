@@ -35,9 +35,11 @@ public class Account {
         return balance;
     }
 
-    //Method to withdraw a value of an account. (método para retirar um valor da conta)
+    //Method to withdraw a value of an account. (método para retirar um valor da conta).
+    //além de sacar o valor que o cliente escolheu (amount) ainda tem que pagar um valor de 5.0 para a Account. Já na SavingsAccount esses 5.0 não é cobrado, faço a sobrescrita...
+    // ... desse método lá na classe SavingsAccout e coloco a anotação @Override.
     public void withDraw(double amount) {
-        balance -= amount;
+        balance -= (amount + 5.0);
     }
 
     //Method to deposit account. (método para depositar um valor na conta)
