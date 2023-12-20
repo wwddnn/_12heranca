@@ -4,8 +4,6 @@ import entities.Account;
 import entities.BusinessAccount;
 import entities.SavingsAccount;
 
-import java.sql.SQLOutput;
-
 public class Program {
     public static void main(String[] args) {
 
@@ -78,6 +76,24 @@ public class Program {
         BusinessAccount acc8 = new BusinessAccount(1003, "Bob", 1000.0, 500.0);
         acc8.withDraw(200.0);
         System.out.println(acc8.getBalance());
-    }
 
+
+        System.out.println("=================================================");
+        System.out.println("POLIMORFISMO: ");
+        //polimorfismo que dizer muitas formas.
+        // eu chamei a mesma operacao que é a withDraw e elas tiveram comportamentos diferentes, veja no exemplo abaixo:
+
+        Account x = new Account(1020, "Alex", 1000.0);
+        Account y = new SavingsAccount(1023, "Maria", 1000.0, 0.01);
+
+        x.withDraw(50.0);
+        y.withDraw(50.0);
+
+        System.out.println(x.getBalance());
+        System.out.println(y.getBalance());
+
+
+
+
+    }
 }
